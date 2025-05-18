@@ -1,0 +1,16 @@
+<form class="base-forms" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <legend>Regisztráció</legend>
+    <fieldset>
+        <label>Felhasználónév: <input formControlName="username" name="username" type="text" required [ngClass]="{'invalid':registerForm.get('username')?.errors}"></label>
+        <label>Jelszó: <input formControlName="password" name="password" type="password" required [ngClass]="{'invalid':registerForm.get('password')?.errors}"></label>
+        <label>Jelszó megint: <input formControlName="passwordAgain" name="passwordAgain" type="password" required [ngClass]="{'invalid':registerForm.get('passwordAgain')?.errors}"></label>
+        <div class="buttons">
+            <button type="submit">Regisztráció</button>
+            <button type="button" routerLink="/login">Belépés...</button>
+        </div>
+        <div class="errors">
+            <p *ngIf="isErrorOccur('passwordAgain','not_same')">A jelszavak nem egyeznek.</p>
+            <p *ngIf="isErrorOccur('password','length')">A jelszó legalább {{getPassMinLen}} karakter hosszú kell hogy legyen.</p>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,6 @@
+<nav>
+    <a href="/kerdoivek">Nyilvános kérdőívek</a>
+    <a *ngIf="isLoggedIn" href="/szerkesztes">Kérdőívek szerkesztése</a>
+    <a *ngIf="!isLoggedIn" href="/login">Bejelentkezés</a>
+    <a *ngIf="isLoggedIn" href="/logout">Kijelentkezés</a>
+</nav>

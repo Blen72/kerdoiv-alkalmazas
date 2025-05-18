@@ -1,0 +1,19 @@
+<div class="kerdes">
+    <label *ngIf="editMode">Kérdés: <input [(ngModel)]="kerdesEdit" (change)="onEdit()" value="{{kerdes}}" type="text"/></label><br *ngIf="editMode"/>
+    <label *ngIf="editMode">Típus:
+        <select [(ngModel)]="tipusEdit" (change)="onEdit()" type="text">
+            <option value="text">szöveges</option>
+            <option value="radio">egyszeres választás</option>
+            <option value="checkbox">többszörös választás</option>
+        </select>
+    </label><br *ngIf="editMode"/>
+    <span>Kérdés: {{kerdes}}</span><br/>
+    <span *ngIf="type!=='text'">
+        Válaszok:<br/>
+        <span *ngFor="let valasz of valaszok">
+            <label>{{valasz}}<input [value]="valasz" [name]="kerdesid" [type]="type" (click)="onClick(kerdesid, valasz)"/></label><br/>
+        </span>
+        <label *ngIf="editMode">Régi válaszok: {{valaszok}}. <br/> Új válaszok (";"-vel elválassztva): <input [(ngModel)]="valaszokEdit" (change)="onEdit()" type="text"/></label>
+    </span>
+    <label *ngIf="type==='text'">Válasz: <input [(ngModel)]="selected2" type="text" (change)="onChange(selected2)"></label><br/>
+</div>

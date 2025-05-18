@@ -1,0 +1,11 @@
+<form class="base-forms" (ngSubmit)="login()">
+    <legend>Bejelentkezés</legend>
+    <fieldset>
+        <label>Felhasználónév: <input [(ngModel)]="username" name="username" type="text" required></label>
+        <label>Jelszó: <input [(ngModel)]="password" name="password" type="password" required></label>
+        <div class="buttons">
+            <button type="submit">Belépés</button>
+            <button type="button" routerLink="/register">Regisztráció...</button>
+        </div>
+    </fieldset>
+</form>

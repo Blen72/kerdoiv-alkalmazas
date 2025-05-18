@@ -1,0 +1,21 @@
+.kerdoivek {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 16px;
+    flex-wrap: wrap;
+    /*width: fit-content;*/
+}
+
+.kerdoiv-node {
+    width: fit-content;
+    background-color: lightblue;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 2px 1px 3px gray;
+}
+
+.valasz-csoportok {
+    border-left: 1px solid black;
+    padding-left: 24px;
+}

@@ -1,0 +1,34 @@
+<form class="base-forms" (ngSubmit)="addKerdoiv()">
+    <legend>Kérdőív hozzáadása</legend>
+    <fieldset>
+        <label>Kérdőív neve: <input [(ngModel)]="nev" name="nev" type="text" required></label>
+        <label>Nyilvánosság: <input [(ngModel)]="nyilvanos" name="nyilvanos" type="checkbox" required></label>
+        <div class="buttons">
+            <button type="submit">Hozzáadás</button>
+        </div>
+    </fieldset>
+</form>
+
+<h1>Kérdőív kiválasztása</h1>
+<select [(ngModel)]="kerdoid" name="kerdoid" (ngModelChange)="onChange()">
+    <option *ngFor="let kerdoiv of kerdoivek" [value]="kerdoiv['_id']">{{kerdoiv["nev"]}}</option>
+</select>
+
+
+<div *ngIf="kerdoid">
+    <h2>{{kerdoNev}} ({{kerdoNyilvanossag?"nyilvános":"nem nyilvános"}})</h2>
+    <div class="edit-kerdes">
+        <label>Kérdőív neve: <input [(ngModel)]="kerdoNev" type="text"/></label><br/>
+        <label>Kérdőív nyilvánossága: <input [(ngModel)]="kerdoNyilvanossag" type="checkbox"/></label><br/>
+        <button (click)="editKerdoiv()">Szerkesztés</button>
+        <button (click)="deleteKerdoiv()">Törlés</button>
+    </div>
+    <div class="edit-kerdes" *ngFor="let kerdes of this.kerdesek">
+        <app-kerdes (editdata)="getEditData($event)" [kerdes]="kerdes['kerdes']" [editMode]="true" [type]="kerdes['type']" [valaszok]="kerdes['valaszok']" [kerdesid]="kerdes['_id']"></app-kerdes>
+        <button (click)="editKerdes(kerdes._id)">Szerkesztés</button>
+        <button (click)="deleteKerdes(kerdes._id)">Törlés</button>
+    </div>
+    <app-kerdes (editdata)="handleNewKerdes($event)" [kerdes]="ujkerdes['kerdes']" [editMode]="true" [type]="ujkerdes['type']" [valaszok]="ujkerdes['valaszok']" [kerdesid]="'dummy'"></app-kerdes>
+    <p>Kérdés: {{ujkerdes.kerdes}}, Válasz: {{ujkerdes.valaszok}}, Típus: {{ujkerdes.type}}</p>
+    <button (click)="addKerdes()">Kérdés hozzáadása</button>
+</div>

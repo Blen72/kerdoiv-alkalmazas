@@ -1,0 +1,28 @@
+<div class="kerdoivek">
+    <form class="kerdoiv-node" *ngFor="let kerdoiv of kerdoivek">
+        <span>Kérdőív neve: {{kerdoiv["nev"]}}</span><br/>
+        <span>Készítő: {{kerdoiv["username"]}}</span><br/>
+        <button (click)="getKerdoiv(kerdoiv['_id'], kerdoiv['username'])">Kitötés</button>
+        <button (click)="getKitoltesek(kerdoiv['_id'])">Kitötések megtekintése</button>
+    </form>
+</div>
+
+<div *ngIf="kerdoid">
+    <h2>{{kerdoNev}} by {{kerdoKeszito}}</h2>
+    <div *ngFor="let kerdes of this.kerdesek">
+        <app-kerdes (selected)="handleKitoltesData($event, kerdes._id)" [kerdes]="kerdes['kerdes']" [editMode]="false" [type]="kerdes['type']" [valaszok]="kerdes['valaszok']" [kerdesid]="kerdes['_id']"></app-kerdes>
+    </div>
+    <button (click)="send()">Beküldés</button>
+</div>
+
+<div *ngIf="vanadat">
+    <h2>Kitöltés adatai</h2>
+    <div *ngFor="let kerdesId of kerdesIds | keyvalue">
+        <p>{{kerdesId.value}}</p>
+        <ul class="valasz-csoportok" *ngFor="let kerdesAdat of kerdesAdatok[kerdesId.key]">
+            <li *ngFor="let valasz of kerdesAdat">
+                {{valasz}}
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    /*height: 3rem;*/
+    background: lightgreen;/*linear-gradient(90deg, white, rgb(82, 217, 116) 10%, rgb(82, 217, 116) 90%, white);*/
+    border-radius: 16px;
+    padding: 16px;
+    margin: 8px;
+}
+
+a {
+    padding: 4px 8px;
+    background-color: rgb(82, 217, 116); 
+    border: 1px solid black;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+}

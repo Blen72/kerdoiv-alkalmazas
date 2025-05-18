@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+.base-forms {
+    width: fit-content;
+    margin: 0 auto;
+    background-color: aqua;
+    border: 2px solid navy;
+    border-radius: 8px;
+
+    legend {
+        background-color: rgba(0,0,0,0.2);
+        font-family: 'Arial';
+        font-size: 4rem;
+        padding: 8px 16px;
+        text-align: center;
+    }
+
+    fieldset {
+        border: none;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 0 16px 8px;
+    }
+
+    label {
+        display: block;
+        padding: 4px 4px;
+        text-align: end;
+        font-size: 1.25rem;
+
+        input {
+            width: 50%;
+            border: 1px solid green;
+            font-size: 1.25rem;
+        }
+        input.invalid {
+            border: 1px solid red;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 8px;
+        
+        button {
+            background-color: lime;
+            border: 2px solid green;
+            margin: 0 4px;
+            font-size: 1.25rem;
+        }
+    }
+
+    .errors{
+        color: red;
+        font-weight: bold;
+    }
+}
